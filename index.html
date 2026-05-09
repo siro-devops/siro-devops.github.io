@@ -1,125 +1,440 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Siro Collins - DevOps Portfolio</title>
+    <title>Siro Collins | DevOps & Cloud Engineer Portfolio</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+        * {
             margin: 0;
-            padding: 20px;
-            background-color: #f5f5f5;
-            color: #333;
+            padding: 0;
+            box-sizing: border-box;
         }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #f5f5f5;
+        }
+
         .container {
-            max-width: 800px;
-            margin: auto;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
+
+        header {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1a3e 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
         h1 {
-            color: #2c3e50;
-            border-bottom: 3px solid #3498db;
-            padding-bottom: 10px;
+            font-size: 3rem;
+            margin-bottom: 10px;
         }
+
+        .tagline {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .badge-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.2);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        section {
+            padding: 50px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
         h2 {
-            color: #34495e;
-            margin-top: 30px;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #0a0e27;
         }
-        .project {
-            background: #f8f9fa;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 5px;
-            border-left: 4px solid #3498db;
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
         }
-        .project h3 {
-            margin-top: 0;
-            color: #2c3e50;
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
         }
-        .project a {
-            color: #3498db;
+
+        .project-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .project-header {
+            background: #0a0e27;
+            padding: 20px;
+            color: white;
+        }
+
+        .project-header h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+
+        .project-header .tech-stack {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .tech-tag {
+            display: inline-block;
+            background: #e0e0e0;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            margin-right: 6px;
+            margin-bottom: 6px;
+        }
+
+        .project-links {
+            margin-top: 16px;
+            padding-top: 12px;
+            border-top: 1px solid #eee;
+        }
+
+        .project-links a {
+            color: #0a0e27;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-right: 20px;
         }
-        .project a:hover {
+
+        .project-links a:hover {
             text-decoration: underline;
         }
-        .skills {
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .skill-category h3 {
+            margin-bottom: 12px;
+            color: #0a0e27;
+        }
+
+        .skill-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin: 20px 0;
+            gap: 8px;
         }
-        .skill {
-            background: #3498db;
+
+        .skill-item {
+            background: #f0f0f0;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: #0a0e27;
             color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 14px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: background 0.2s;
         }
-        .footer {
-            margin-top: 40px;
+
+        .btn:hover {
+            background: #1a1a3e;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #0a0e27;
+            color: #0a0e27;
+        }
+
+        .btn-outline:hover {
+            background: #0a0e27;
+            color: white;
+        }
+
+        footer {
+            background: #0a0e27;
+            color: white;
             text-align: center;
-            color: #7f8c8d;
-            font-size: 14px;
+            padding: 30px 0;
+        }
+
+        .feature-badge {
+            display: inline-block;
+            background: #ff6b35;
+            color: white;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 12px;
+            margin-left: 8px;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+            .project-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
+    <header>
+        <div class="container">
+            <h1>Siro Collins</h1>
+            <div class="tagline">Cloud & DevOps Engineer</div>
+            <div class="tagline" style="font-size: 1rem; opacity: 0.8;">AWS · Kubernetes · Terraform · CI/CD · GitOps · Chaos Engineering</div>
+            <div class="badge-container">
+                <span class="badge">☸️ Kubernetes</span>
+                <span class="badge">🏗️ Terraform</span>
+                <span class="badge">☁️ AWS</span>
+                <span class="badge">🔄 GitOps (ArgoCD)</span>
+                <span class="badge">🔥 LitmusChaos</span>
+                <span class="badge">📊 Prometheus + Grafana</span>
+                <span class="badge">🔐 Vault + Security Scanning</span>
+            </div>
+        </div>
+    </header>
+
     <div class="container">
-        <h1>Hi, I'm Siro Collins</h1>
-        <p><strong>DevOps / Cloud Engineer</strong> passionate about building scalable infrastructure and automating everything.</p>
+        <!-- About -->
+        <section>
+            <h2>👋 About Me</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 20px;">
+                I build cloud infrastructure that's <strong>secure, observable, and recovers from failure automatically</strong>.
+            </p>
+            <p>
+                My GitHub proves I can <strong>operate</strong> systems, not just deploy them. Every project includes working code, 
+                screenshots, and documentation. I'm available for cloud setup, DevOps audits, Kubernetes deployments, 
+                and ongoing cloud operations on AWS and Azure.
+            </p>
+        </section>
 
-        <h2> Skills</h2>
-        <div class="skills">
-            <span class="skill">AWS</span>
-            <span class="skill">Docker</span>
-            <span class="skill">Kubernetes</span>
-            <span class="skill">Terraform</span>
-            <span class="skill">Jenkins</span>
-            <span class="skill">GitHub Actions</span>
-            <span class="skill">Python</span>
-            <span class="skill">Bash</span>
-        </div>
+        <!-- Featured Project -->
+        <section>
+            <h2>🔥 Featured: Kubernetes Incident Response</h2>
+            <div class="project-card" style="margin-bottom: 20px;">
+                <div class="project-header">
+                    <h3>k8s-incident-response <span class="feature-badge">Flagship</span></h3>
+                    <div class="tech-stack">LitmusChaos | Prometheus | Grafana | k6 | Kubernetes</div>
+                </div>
+                <div class="project-content">
+                    <p>Complete incident response system: chaos injection → alerting → auto-healing → runbook documentation.</p>
+                    <ul style="margin: 15px 0 15px 20px;">
+                        <li>Pod kill experiment → Kubernetes rescheduled in <strong>~8 seconds</strong></li>
+                        <li>Prometheus alerts fire on <code>HighPodRestartRate</code></li>
+                        <li>3 runbooks (pod crash, latency, CPU saturation)</li>
+                        <li>k6 synthetic monitoring (smoke + load tests)</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/siro-devops/k8s-incident-response" target="_blank">📦 GitHub →</a>
+                        <a href="https://github.com/siro-devops/k8s-incident-response/tree/main/screenshots" target="_blank">📸 Screenshots →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <h2> Featured Projects</h2>
-        
-        <div class="project">
-            <h3> Microservices CI/CD Pipeline</h3>
-            <p>End-to-end CI/CD pipeline for microservices using GitHub Actions, Docker, and Kubernetes. Includes automated testing and containerization.</p>
-            <p><strong>Tech:</strong> Python, Flask, Docker, GitHub Actions</p>
-            <a href="https://github.com/YOUR-USERNAME/microservices-cicd-pipeline">View Project →</a>
-        </div>
+        <!-- Project Categories -->
+        <section>
+            <h2>📦 Projects by Category</h2>
 
-        <div class="project">
-            <h3> AWS Terraform Infrastructure</h3>
-            <p>Production-grade AWS infrastructure as code using Terraform modules for networking, compute, and databases. Multi-environment setup (dev/staging/prod).</p>
-            <p><strong>Tech:</strong> Terraform, AWS, Ansible</p>
-            <a href="https://github.com/YOUR-USERNAME/aws-terraform-infrastructure">View Project →</a>
-        </div>
+            <h3 style="margin: 30px 0 15px;">☸️ Kubernetes & GitOps</h3>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-header"><h3>argocd-gitops-demo</h3><div class="tech-stack">ArgoCD | Kubernetes | GitOps</div></div>
+                    <div class="project-content"><p>Declarative Kubernetes deployments via Git. The cluster state is defined entirely in code.</p><div class="project-links"><a href="https://github.com/siro-devops/argocd-gitops-demo" target="_blank">GitHub →</a></div></div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header"><h3>k8s-autoscaling</h3><div class="tech-stack">HPA | VPA | KEDA | Kubernetes</div></div>
+                    <div class="project-content"><p>Horizontal + Vertical Pod Autoscaling. Handles load spikes and optimizes resource usage.</p><div class="project-links"><a href="https://github.com/siro-devops/k8s-autoscaling" target="_blank">GitHub →</a></div></div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header"><h3>k8s-rbac-network-policies</h3><div class="tech-stack">RBAC | Network Policies | Kubernetes</div></div>
+                    <div class="project-content"><p>Least-privilege access control and pod-to-pod communication rules. Security-focused K8s setup.</p><div class="project-links"><a href="https://github.com/siro-devops/k8s-rbac-network-policies" target="_blank">GitHub →</a></div></div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header"><h3>k8s-monitoring-stack</h3><div class="tech-stack">Prometheus | Grafana | Loki | Helm</div></div>
+                    <div class="project-content"><p>Full observability platform: metrics, logs, dashboards. Deployed via Helm on Minikube.</p><div class="project-links"><a href="https://github.com/siro-devops/k8s-monitoring-stack" target="_blank">GitHub →</a></div></div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header"><h3>k8s-vault-secrets</h3><div class="tech-stack">HashiCorp Vault | Kubernetes | Secrets</div></div>
+                    <div class="project-content"><p>Secret management with Vault. Inject secrets into pods without hardcoding.</p><div class="project-links"><a href="https://github.com/siro-devops/k8s-vault-secrets" target="_blank">GitHub →</a></div></div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header"><h3>k8s-slo-observability</h3><div class="tech-stack">SLOs | SLIs | Prometheus</div></div>
+                    <div class="project-content"><p>Service Level Objectives and error budgets. Reliability engineering in practice.</p><div class="project-links"><a href="https://github.com/siro-devops/k8s-slo-observability" target="_blank">GitHub →</a></div></div>
+                </div>
+            </div>
 
-        <div class="project">
-            <h3> Kubernetes Monitoring Stack</h3>
-            <p>Complete observability platform for Kubernetes with Prometheus metrics, Grafana dashboards, Loki logs, and AlertManager for intelligent alerting.</p>
-            <p><strong>Tech:</strong> Prometheus, Grafana, Loki, Kubernetes</p>
-            <a href="https://github.com/YOUR-USERNAME/k8s-monitoring-stack">View Project →</a>
-        </div>
+            <h3 style="margin: 30px 0 15px;">🏗️ Infrastructure as Code & Cloud</h3>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-header"><h3>aws-terraform-infrastructure</h3><div class="tech-stack">Terraform | AWS | VPC | ALB | EC2</div></div>
+                    <div class="project-content"><p>Production-grade AWS: custom VPC, EC2 behind ALB, Auto Scaling, least-privilege IAM.</p><div class="project-links"><a href="https://github.com/siro-devops/aws-terraform-infrastructure" target="_blank">GitHub →</a></div></div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header"><h3>multi-env-terraform</h3><div class="tech-stack">Terraform | Dev/Staging/Prod | Workspaces</div></div>
+                    <div class="project-content"><p>Multi-environment infrastructure (dev → staging → prod). No more configuration drift.</p><div class="project-links"><a href="https://github.com/siro-devops/multi-env-terraform" target="_blank">GitHub →</a></div></div>
+                </div>
+            </div>
 
-        <h2> Connect With Me</h2>
-        <p>
-            📧 Email: collins.siro.c@gmail.com<br>
-            🔗 LinkedIn: <a href="#">linkedin.com/in/siro-collins/</a><br>
-            🐙 GitHub: <a href="#">github.com/siro-devops</a>
-        </p>
+            <h3 style="margin: 30px 0 15px;">🔄 CI/CD & Security</h3>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-header"><h3>microservices-cicd-pipeline</h3><div class="tech-stack">Jenkins | Docker | Kubernetes | GitHub Actions</div></div>
+                    <div class="project-content"><p>End-to-end pipeline: commit → build → test → deploy. Zero-downtime with rollback.</p><div class="project-links"><a href="https://github.com/siro-devops/microservices-cicd-pipeline" target="_blank">GitHub →</a></div></div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header"><h3>container-security-scanning</h3><div class="tech-stack">Trivy | Snyk | Docker | CI/CD</div></div>
+                    <div class="project-content"><p>Shift-left security. Scan containers for CVEs before they reach production.</p><div class="project-links"><a href="https://github.com/siro-devops/container-security-scanning" target="_blank">GitHub →</a></div></div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header"><h3>k8s-actions-runners</h3><div class="tech-stack">GitHub Actions | Kubernetes | Self-hosted</div></div>
+                    <div class="project-content"><p>Scalable CI/CD infrastructure. GitHub Actions runners on Kubernetes.</p><div class="project-links"><a href="https://github.com/siro-devops/k8s-actions-runners" target="_blank">GitHub →</a></div></div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header"><h3>cicd-demo-app</h3><div class="tech-stack">GitHub Pages | GitHub Actions | HTML</div></div>
+                    <div class="project-content"><p>Live site auto-deployed on every push. The pipeline itself is the demo.</p><div class="project-links"><a href="https://github.com/siro-devops/cicd-demo-app" target="_blank">GitHub →</a></div></div>
+                </div>
+            </div>
+        </section>
 
-        <div class="footer">
-            <p>© 2025 Siro Collins. Hosted on GitHub Pages.</p>
-        </div>
+        <!-- Skills -->
+        <section>
+            <h2>🛠️ Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>☁️ Cloud</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">AWS (S3, EC2, VPC, IAM, ALB, RDS)</span>
+                        <span class="skill-item">Azure (VMs, Blob, AAD)</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>☸️ Containers & Orchestration</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Docker</span>
+                        <span class="skill-item">Kubernetes</span>
+                        <span class="skill-item">Helm</span>
+                        <span class="skill-item">Minikube</span>
+                        <span class="skill-item">ArgoCD</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>🏗️ IaC & Automation</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Terraform</span>
+                        <span class="skill-item">Ansible</span>
+                        <span class="skill-item">GitHub Actions</span>
+                        <span class="skill-item">Jenkins</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>📊 Observability & Chaos</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Prometheus</span>
+                        <span class="skill-item">Grafana</span>
+                        <span class="skill-item">Loki</span>
+                        <span class="skill-item">LitmusChaos</span>
+                        <span class="skill-item">k6</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>🔐 Security & Secrets</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">HashiCorp Vault</span>
+                        <span class="skill-item">Trivy / Snyk</span>
+                        <span class="skill-item">RBAC</span>
+                        <span class="skill-item">Network Policies</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>📝 Languages</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Python</span>
+                        <span class="skill-item">Bash</span>
+                        <span class="skill-item">YAML</span>
+                        <span class="skill-item">HCL</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GitHub Stats -->
+        <section>
+            <h2>📊 GitHub Activity</h2>
+            <div style="text-align: center;">
+                <img src="https://github-readme-stats.vercel.app/api?username=siro-devops&show_icons=true&theme=dark&hide_title=true" alt="GitHub Stats" style="max-width: 100%;">
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section>
+            <h2>📫 Available For</h2>
+            <div style="text-align: center; margin-bottom: 30px;">
+                <p style="margin-bottom: 20px;">Cloud setup and migration · DevOps audits · Infrastructure-as-code builds · Kubernetes deployments · Ongoing cloud operations</p>
+            </div>
+            <div class="contact-buttons">
+                <a href="https://github.com/siro-devops" class="btn" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/siro-collins" class="btn btn-outline" target="_blank">LinkedIn</a>
+                <a href="https://www.upwork.com/freelancers/~your-profile" class="btn btn-outline" target="_blank">Upwork</a>
+            </div>
+        </section>
     </div>
+
+    <footer>
+        <div class="container">
+            <p>Siro Collins — Cloud & DevOps Engineer</p>
+            <p style="margin-top: 10px; font-size: 0.85rem; opacity: 0.7;">"Observability without chaos is just guessing."</p>
+        </div>
+    </footer>
 </body>
 </html>
